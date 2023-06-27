@@ -21,6 +21,10 @@ namespace AzureSignTool
             {
                 config.Description = "Signs a file.";
             });
+            application.Command<AwsKms.SignCommand>("aws-sign", config =>
+            {
+                config.Description = "Signs a file using private key stored in AWS KMS";
+            });
             application.Conventions.UseDefaultConventions();
             application.UnrecognizedArgumentHandling = UnrecognizedArgumentHandling.StopParsingAndCollect;
             return application.Execute(args);
